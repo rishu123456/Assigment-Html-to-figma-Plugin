@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>HTML to Figma</h3>
+    <textarea id="html-input" rows="10" cols="30" placeholder="Paste your HTML here"></textarea>
+    <button id="convert">Convert to Figma</button>
+
+    <script>
+      document.getElementById('convert').onclick = () => {
+        const htmlContent = document.getElementById('html-input').value;
+        parent.postMessage({ pluginMessage: { type: 'convert-html', html: htmlContent } }, '*');
+      };
+    </script>
+  </body>
+</html>

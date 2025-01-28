@@ -1,0 +1,8 @@
+{
+    "name": "My First Plugin",
+    "id": "com.example.myfirstplugin",
+    "api": "1.0.0",
+    "main": "src/code.ts",
+    "ui": "src/ui.html"
+  }
+  
