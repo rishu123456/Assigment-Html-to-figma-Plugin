@@ -1,15 +1,16 @@
 {
-    "compilerOptions": {
-      "target": "ES6",
-      "module": "ES6",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "outDir": "./dist",
-      "rootDir": "./src",
-      "types": ["@figma/plugin-typings"]
-    },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules"]
-  }
-  
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "outDir": "dist",
+    "strict": true,
+    "lib": ["esnext"],  // Only include ESNext to avoid conflicts with DOM types
+    "skipLibCheck": true  // Skip checking declaration files for errors
+  },
+  "include": [
+    "src/**/*"  // Include all source files in the src folder
+  ],
+  "exclude": [
+    "node_modules"  // Exclude node_modules from being included in the compilation
+  ]
+}

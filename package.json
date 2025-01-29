@@ -1,20 +1,12 @@
 {
-  "name": "todo1",
+  "name": "html-to-figma-plugin",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "typescript": "^5.7.3"
-  },
+  "build": "tsc && copy src\\ui.html dist\\ui.html"
+}
+,
   "devDependencies": {
-    "@figma/plugin-typings": "^1.107.0-beta.2"
+    "@figma/plugin-typings": "^1.107.0-beta.2",
+    "typescript": "latest"
   }
 }

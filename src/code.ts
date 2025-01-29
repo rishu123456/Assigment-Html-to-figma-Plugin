@@ -1,31 +1,20 @@
+type Message = {
+    type: "convert-html";  // Type of the message
+    html: string;          // The HTML content to be converted
+  };
 figma.showUI(__html__, { width: 400, height: 300 });
-
-figma.ui.onmessage = (msg) => {
-  if (msg.type === 'convert-html') {
-    const htmlContent = msg.html;
-    const fragment = document.createElement('div');
-    fragment.innerHTML = htmlContent;
-
-    const elements = Array.from(fragment.children);
-    elements.forEach((element: any) => {
-      if (element.tagName === 'DIV') {
-        // Create a rectangle for div
-        const rect = figma.createRectangle();
-        rect.resize(200, 100); // Default size, modify based on content
-        rect.x = 100;
-        rect.y = 100;
-        figma.currentPage.appendChild(rect);
-      } else if (element.tagName === 'P') {
-        // Create a text box for paragraph
-        const text = figma.createText();
-        text.characters = element.innerText;
-        text.x = 100;
-        text.y = 100;
-        figma.currentPage.appendChild(text);
-      }
-      // Add more tag handling as needed
-    });
-
-    figma.viewport.scrollAndZoomIntoView(figma.currentPage.children);
+figma.ui.onmessage = (message: Message) => {
+  if (message.type === "convert-html") {
+    const frame = figma.createFrame();
+    frame.resize(400, 300);
+    frame.name = "Converted HTML";
+    frame.fills = [{ type: "SOLID", color: { r: 1, g: 1, b: 1 } }];
+    
+    const text = figma.createText();
+    text.characters = message.html;
+    frame.appendChild(text);
+    
+    figma.currentPage.appendChild(frame);
+    figma.closePlugin("HTML Converted to Figma Design");
   }
 };
